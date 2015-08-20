@@ -61,7 +61,7 @@ def call_linotp(path, params):
     
 	# Connect with httplib2 (note that not all versions are compiled with disable_ssl_validation)
     try:
-        http = httplib2.Http(disable_ssl_certificate_validation = DISABLE_SSL_VALIDATION, timeout = 10)
+        http = httplib2.Http(disable_ssl_certificate_validation = DISABLE_SSL_VALIDATION, timeout = 20)
     except TypeError as exx:
         http = httplib2.Http(timeout = 10)
     
