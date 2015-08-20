@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <br/>
-                <li>Choose a four-digit PIN code for the new token. Your PIN is required whenever you are asked for an access code - for example, if your PIN
+                <li>Choose a PIN code for the new token. It must have an even number of digits. Your PIN is required whenever you are asked for an access code - for example, if your PIN
                     is 1234 and your one-time-password is 000000, you would enter '1234000000'.
                     <table>
                         <tr><td><span id=error_pin></span></td></tr>
@@ -47,13 +47,13 @@
                             <!--[if lte IE 9]>
                                 <td><label class="ie-label" for="elm_pin1">PIN</label></td>
                             <![endif]-->
-                            <td><input id="elm_pin1" autocomplete="off" type="password" placeholder="PIN" size="10" maxlength="4" tabindex="1" class="text ui-widget-content ui-corner-all"/></td>
+                            <td><input id="elm_pin1" autocomplete="off" type="password" placeholder="PIN" size="10" tabindex="1" class="text ui-widget-content ui-corner-all"/></td>
                         </tr>
                         <tr>
                             <!--[if lte IE 9]>
                                 <td><label class="ie-label" for="elm_pin2">Confirm PIN</label></td>
                             <![endif]-->                        
-                            <td><input id="elm_pin2" autocomplete="off" type="password" placeholder="Confirm PIN" size="10" maxlength="4" tabindex="1" onkeyup="checkpins('elm_pin1', 'elm_pin2');" class="text ui-widget-content ui-corner-all"/></td>
+                            <td><input id="elm_pin2" autocomplete="off" type="password" placeholder="Confirm PIN" size="10" tabindex="1" onkeyup="checkpins('elm_pin1', 'elm_pin2');" class="text ui-widget-content ui-corner-all"/></td>
                         </tr>
                     </table>
                     <button id="showadvanced" class="ui-button ui-button-text-icons ui-button-icon-primary display-button"  onclick="toggleadv(); return false;"></button><br/>
@@ -131,7 +131,7 @@
                             <!--[if lte IE 9]>
                                 <td><label class="ie-label" for="otp">Access Code</label></td>
                             <![endif]-->
-                            <td><input id="otp" autocomplete="off" type="password" placeholder="Access Code" size="10" maxlength="10" tabindex="1" class="text ui-widget-content ui-corner-all"/></td>
+                            <td><input id="otp" autocomplete="off" type="password" placeholder="Access Code" size="10" tabindex="1" class="text ui-widget-content ui-corner-all"/></td>
                         </tr>
                     </table>
                     <br/>
