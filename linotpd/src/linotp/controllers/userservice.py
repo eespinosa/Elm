@@ -1446,12 +1446,12 @@ class UserserviceController(BaseController):
                 if param.get("seedtype") == "random":
                     otpkey = generate_otpkey(32)
                 else:
-                    seed = param.get("seedvalue")
-                    if (len(seed) == 20) or (len(seed) == 32):
+                    seed = param.get("seedval")
+                    if (len(seed) == 40) or (len(seed) == 64): # hexlified lengths
                         otpkey = seed
                     else:
                         log.warning("[webprovision] Invalid seed length.")
-                        sendError(response, u"The seed needs to be either 20 or 32 bytes long.")
+                        return sendError(response, u"The seed needs to be either 20 or 32 bytes long.")
 
                 t_type = typ.lower()[4:]
 
