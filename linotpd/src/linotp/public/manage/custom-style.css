@@ -68,7 +68,7 @@
 	color: #fff;
  }
 
- .sf-arrows .sf-with-ul::after {
+ .sf-arrows .sf-with-ul:after {
         top: 3.25em;
         right: 1em;
  }
