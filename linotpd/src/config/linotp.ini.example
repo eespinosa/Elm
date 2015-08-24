@@ -214,7 +214,7 @@ handlers = file
 ## linotp module logging definition:
 [logger_linotp]
 level = WARN
-handlers = file
+handlers = null
 qualname = linotp
 
 [logger_sqlalchemy]
@@ -227,7 +227,7 @@ qualname = sqlalchemy.engine
 
 
 [handlers]
-keys = file
+keys = file, null
 
 [handler_file]
 class = handlers.RotatingFileHandler
@@ -235,6 +235,12 @@ class = handlers.RotatingFileHandler
 # and rotate 4  files
 args = ('/var/log/linotp/linotp.log','a', 10000000, 4)
 level = WARN
+formatter = generic
+
+[handler_null]
+class = logging.NullHandler
+args = ''
+level = NOTSET
 formatter = generic
 
 [formatters]
