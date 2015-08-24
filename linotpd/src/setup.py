@@ -88,6 +88,7 @@ setup(
         'tools/elm-authenticate-xml',
         'tools/elm-authenticate',
         'tools/linotp-enroll-smstoken',
+        'tools/linotp-pg-backup',
         ],
     setup_requires=[
         'PasteScript>=1.6.3',
