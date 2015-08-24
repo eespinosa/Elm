@@ -1227,21 +1227,6 @@ if isinstance(lang, list):
     }
 </script>
 
-<!-- ############### get list of OTP values ############################ -->
-<div id='dialog_getmulti'>
-    <p>${_("You may get OTP values for token:")} <span id='tokenid_getmulti'> </span></p>
-    <p><label for=otp_values_count>${_("Enter the number, how many OTP values you want to retrieve:")}</label></p>
-    <input id='otp_values_count' maxlength='6' class='required'></input>
-</div>
-
-<script>
-    function translate_dialog_getmulti() {
-        $("#dialog_getmulti" ).dialog( "option", "title", '${_("Get OTP values")}' );
-        $('#button_getmulti_ok .ui-button-text').html('${_("OK")}');
-        $('#button_getmulti_cancel .ui-button-text').html('${_("Cancel")}');
-    }
-</script>
-
 <!-- ########### unassign token############################# -->
 <div id='dialog_unassign_token'>
     <p>${_("The following Tokens will be unassigned from the their users:")}

@@ -29,7 +29,6 @@
  <button class='ui-button' id='button_tokeninfo'>${_("Token Info")}</button>
  <button class='ui-button' id='button_resync'>${_("Resync Token")}</button>
  <button class='ui-button' id='button_tokenrealm'>${_("Set Token Realm")}</button>
- <button class='ui-button' id='button_getmulti'>${_("Get OTP")}</button>
  
 <table id="token_table" class="flexme2" style="display:none"></table>
    

@@ -584,13 +584,11 @@ function get_selected(){
         if (selectedTokenItems.length == 1) {
             $("#button_resync").button("enable");
             $('#button_losttoken').button("enable");
-            $('#button_getmulti').button("enable");
             $("#button_tokeninfo").button("enable");
           }
         else {
             $("#button_resync").button("disable");
             $("#button_losttoken").button("disable");
-            $('#button_getmulti').button("disable");
             $("#button_tokeninfo").button("disable");
         }
     }
@@ -635,7 +633,6 @@ function disable_all_buttons(){
     $('#button_assign').button("disable");
     $('#button_unassign').button("disable");
     $('#button_tokenrealm').button("disable");
-    $('#button_getmulti').button("disable");
     $('#button_enable').button("disable");
     $('#button_disable').button("disable");
     $('#button_setpin').button("disable");
@@ -2784,11 +2781,6 @@ function tokenbuttons(){
             primary: 'ui-icon-home'
         }
     });
-    $('#button_getmulti').button({
-        icons: {
-            primary: 'ui-icon-question'
-        }
-    });
     $('#button_losttoken').button({
         icons: {
             primary: 'ui-icon-notice'
@@ -2958,41 +2950,6 @@ function tokenbuttons(){
             do_dialog_icons();
             translate_dialog_token_realm();
         }
-    });
-
-    var $dialog_getmulti = $('#dialog_getmulti').dialog({
-        autoOpen: false,
-        title: 'Get OTP values',
-        resizeable: false,
-        width: 400,
-        modal: true,
-        buttons: {
-            'Get OTP values': {click: function(){
-                var serial = get_selected_tokens()[0];
-                var count  = $('#otp_values_count').val();
-                var session = getsession();
-                window.open('/gettoken/getmultiotp?serial='+serial+'&session='+session+'&count='+count+'&view=1','getotp_window',"status=1,toolbar=1,menubar=1");
-                $(this).dialog('close');
-                },
-                id: "button_getmulti_ok",
-                text: "Get OTP values"
-                },
-            Cancel: {click: function(){
-                $(this).dialog('close');
-                },
-                id: "button_getmulti_cancel",
-                text: "Cancel"
-                }
-        },
-        open: function() {
-            do_dialog_icons();
-            token_string = get_selected_tokens()[0];
-            $('#tokenid_getmulti').html(token_string);
-            translate_dialog_getmulti();
-        }
-    });
-    $('#button_getmulti').click(function(){
-        $dialog_getmulti.dialog('open');
     });
 
     $('#button_tokenrealm').click(function(event){
