@@ -5206,7 +5206,7 @@ function view_token() {
             ],
             height: 400,
             searchitems : [
-                {display: 'in username', name: 'username', isdefault: true },
+                {display: 'in username', name: 'loginname', isdefault: true },
                 {display: 'in all other columns', name : 'all'},
                 {display: 'realm', name: 'realm' }
                 ],

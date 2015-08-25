@@ -211,6 +211,8 @@ class TokenIterator(object):
 
                     # resolve the realm with wildcard:
                     # identify all users and add these to the userlist
+                    ## No need for all of this, users are only in one realm.
+                    '''
                     userlist = []
                     for usr in users:
                         urealm = usr.realm
@@ -223,7 +225,8 @@ class TokenIterator(object):
                             userlist.extend(usr.getUserPerConf())
                         else:
                             userlist.append(usr)
-
+                    '''
+                    userlist = users
                     for usr in userlist:
                         try:
                             tokens = getTokens4UserOrSerial(user=usr, _class=False)
@@ -395,6 +398,8 @@ class TokenIterator(object):
 
         start = thePage * pagesize
         stop = (thePage + 1) * pagesize
+
+        log.debug("[TokenIterator::init] DB-Query condition: %s" % condition)
 
         self.toks = Session.query(Token).filter(condition).\
                                          order_by(order).distinct()
