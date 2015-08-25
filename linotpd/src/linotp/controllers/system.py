@@ -589,10 +589,10 @@ class SystemController(BaseController):
 
             # Do we want to automatically create a realm linked to this resolver?
             if (realmname and res):
-                realmname = "useridresolver.OakIdResolver.IdResolver." + realmname
                 name = getParam(param, 'name', required)
-                log.info("Preparing to auto-create realm %s %s." % (realmname, name))
-                res = setRealm(realmname, name)
+                resolvername = "useridresolver.OakIdResolver.IdResolver." + name
+                log.info("Preparing to auto-create realm %s %s." % (realmname, resolvername))
+                res = setRealm(realmname,resolvername)
 
             Session.commit()
             return sendResult(response, res, 1)
