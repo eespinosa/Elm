@@ -136,7 +136,13 @@ function sms_get_enroll_params(){
     // phone number
     params['phone'] 		= $('#sms_phone').val();
     params['description'] 	=  $('#sms_phone').val() + " " + $('#enroll_sms_desc').val();
-    //params['serial'] 		= create_serial('LSSM');
+
+    // Get prompting type (always/secure)
+    if ( $('#sms_require_all').is(':checked') ) {
+        params['require'] = 'all';
+    } else {
+        params['require'] = 'sec';
+    }
 
     jQuery.extend(params, add_user_data());
 
@@ -156,6 +162,14 @@ function sms_get_enroll_params(){
 <tr>
     <td><label for="enroll_sms_desc" id='enroll_sms_desc_label'>${_("Description")}</label></td>
     <td><input type="text" name="enroll_sms_desc" id="enroll_sms_desc" value="webGUI_generated" class="text" /></td>
+</tr>
+<tr>
+    <td><label for="enroll_sms_require_all" id='enroll_sms_require_all_label'>Require token</label></td>
+    <td class="description" style="padding-left:0em;"><input type="radio" name="enroll_sms_require_radiogroup" value="always" id='sms_require_all' checked>on every initial login</input></td>
+</tr>
+<tr>
+    <td class="description"><label for="enroll_sms_require_sec" id='enroll_sms_require_sec_label'></label></td>
+    <td class="description" style="padding-left: 0em;"><input type="radio" name="enroll_sms_require_radiogroup" value="secure" id='sms_require_sec'>only on secure pages</input></td>
 </tr>
 <tr name="set_pin_rows" class="space" title='${_("Protect your token with a static PIN")}'><th colspan="2">${_("Token PIN:")}</th></tr>
 <tr name="set_pin_rows">

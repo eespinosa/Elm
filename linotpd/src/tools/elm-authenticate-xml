@@ -87,19 +87,13 @@ def webkdc_userinfo(user):
             factors += "<factor>m</factor>"
             # Send back the correct available factors
             for tok in tokens.keys():
-                typ = tok[:4]
-                if typ == "LSSM": # sms
+                if "SEC" in tok: # secure only, do not force multifactor
+                    extra = ""
+                if "SMS" in tok: # sms
                     factors += "<factor>o2</factor>"
                     extra += "<user-message>%s</user-message>" % tokens[tok]["phone"][-3:]
-                elif typ in ["GOOG", "TOTP", "OATH", "HOTP"]: # selfserviced token
+                elif True in map(lambda x: x in tok, ["GOOG", "TOTP", "OATH", "HOTP"]): # selfserviced token
                     factors += "<factor>o3</factor>"
-                elif "UB" in typ: # yubikey
-                    factors += "<factor>o4</factor>"
-            #factors += "<factor>m</factor><factor>o</factor><factor>o1</factor><factor>o2</factor><factor>o3</factor>"
-            # We require MFA here rather than in WebAuthRequireInitialFactor because 
-            # this seems to be the only way to get MFA-if-token/password-if-not working.
-
-            #extra = "<multifactor-required>yes</multifactor-required>"
         # If they don't have a token, they get nothing.
             
         return reply % (user, factors, extra)

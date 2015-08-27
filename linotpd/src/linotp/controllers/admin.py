@@ -756,7 +756,8 @@ class AdminController(BaseController):
             * tokenrealm - optional - the realm a token should be put into
             * otplen     - optional  - length of the OTP value
             * hashlib    - optional  - used hashlib sha1 oder sha256
-
+            * require    - optional  - when to require token (always or only on secure sites)
+        
         ocra arguments:
             for generating OCRA Tokens type=ocra you can specify the following parameters:
 
@@ -824,8 +825,17 @@ class AdminController(BaseController):
                     h_params = tclass_object.classInit(param, user=user)
                     helper_param.update(h_params)
 
+            require = getParam(param, "require", optional) or 'all'
+            prefix = ''
+            if require == 'sec':
+                prefix = 'SEC'
+
+            if tok_type == 'hmac':
+                prefix = "HOTP" + prefix
+            else:
+                prefix = tok_type.upper() + prefix 
+
             serial = helper_param.get('serial', None)
-            prefix = helper_param.get('prefix', None)
             th = TokenHandler()
             if not serial:
                 serial = th.genSerial(tok_type, prefix)

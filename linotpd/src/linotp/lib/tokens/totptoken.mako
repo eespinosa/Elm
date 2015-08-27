@@ -190,6 +190,14 @@ function totp_get_enroll_params(){
         // OTP Key
         params['otpkey'] 	= $('#totp_key').val();
     }
+
+    // Get prompting type (always/secure)
+    if ( $('#totp_require_all').is(':checked') ) {
+        params['require'] = 'all';
+    } else {
+        params['require'] = 'sec';
+    }
+
     params['otplen']   = $('#totp_otplen').val();
     params['timeStep'] = $('#totp_timestep').val();
     params['hashlib']  = $('#totp_algorithm').val();
@@ -284,6 +292,14 @@ $('#totp_google_compliant').click(function() {
 <tr>
     <td class="description"><label for="enroll_totp_desc" id='enroll_totp_desc_label'>${_("Description")}</label></td>
     <td><input type="text" name="enroll_totp_desc" id="enroll_totp_desc" value="web ui generated" class="text" /></td>
+</tr>
+<tr>
+    <td class="description" ><label for="enroll_totp_require_all" id='enroll_totp_require_all_label'>Require token</label></td>
+    <td class="description" style="padding-left:0em;"><input type="radio" name="enroll_totp_require_radiogroup" value="always" id='totp_require_all' checked>on every initial login</input></td>
+</tr>
+<tr>
+    <td class="description"><label for="enroll_totp_require_sec" id='enroll_totp_require_sec_label'></label></td>
+    <td class="description" style="padding-left: 0em;"><input type="radio" name="enroll_totp_require_radiogroup" value="secure" id='totp_require_sec'>only on secure pages</input></td>
 </tr>
 
 

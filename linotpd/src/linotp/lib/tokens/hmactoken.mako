@@ -115,6 +115,12 @@ function hmac_get_enroll_params(){
         url['otpkey'] = $('#hmac_key').val();
     }
 
+    // Get prompting type (always/secure)
+    if ( $('#hmac_require_all').is(':checked') ) {
+        url['require'] = 'all';
+    } else {
+        url['require'] = 'sec';
+    }
     jQuery.extend(url, add_user_data());
 
     url['hashlib']	= $('#hmac_algorithm').val();
@@ -201,6 +207,14 @@ $('#hmac_google_compliant').click(function() {
     <td class="description"><label for="enroll_hmac_desc" id='enroll_hmac_desc_label'>${_("Description")}</label></td>
     <td><input type="text" id="enroll_hmac_desc" 
                 value="web ui generated" class="text" /></td>
+</tr>
+<tr>
+    <td class="description" ><label for="enroll_hmac_require_all" id='enroll_hmac_require_all_label'>Require token</label></td>
+    <td class="description" style="padding-left:0em;"><input type="radio" name="enroll_hmac_require_radiogroup" value="always" id='hmac_require_all' checked>on every initial login</input></td>
+</tr>
+<tr>
+    <td class="description"><label for="enroll_hmac_require_sec" id='enroll_hmac_require_sec_label'></label></td>
+    <td class="description" style="padding-left: 0em;"><input type="radio" name="enroll_hmac_require_radiogroup" value="secure" id='hmac_require_sec'>only on secure pages</input></td>
 </tr>
 
 <tr name="set_pin_rows" class="space" title='${_("Protect your token with a static PIN")}'><th colspan="2">${_("Token PIN:")}</th></tr>
