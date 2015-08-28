@@ -126,9 +126,12 @@ def create_google_authenticator(param, user=None):
             label = param.get('issuer') + ':' + label
 
     else:
-        label = serial or ''
+        # Put only the description in the userless token
+        label = ''
         if len(param.get('description', '')) > 0:
-            label = label + ':' + param.get('description')
+            label = param.get('description')
+        if len(param.get('issuer', '')) > 0:
+            label = param.get('issuer') + ':' + label
 
     label = label[0:allowed_label_len]
     url_label = quote(label)

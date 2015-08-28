@@ -841,6 +841,7 @@ class AdminController(BaseController):
                 serial = th.genSerial(tok_type, prefix)
 
             helper_param['serial'] = serial
+            helper_param['issuer'] = "University of Oxford"
 
             log.info("[init] initialize token. user: %s, serial: %s"
                      % (user.login, serial))
